@@ -37,7 +37,7 @@ The `lib` folder contains some basic functions and constants.
 
 ## Run The Project
 
-Simply use the command `yarn dev` to execute the code.
+Simply run `yarn` first, and then use the command `yarn dev` to execute the code.
 
 ## Guidelines
 
