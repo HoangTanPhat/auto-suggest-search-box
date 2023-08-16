@@ -1,34 +1,64 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Auto-Suggest Search Box Guidelines
 
-## Getting Started
+## Introduction
 
-First, run the development server:
+This document provides some essential information for implementing auto-suggest search box feature effectively.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+## Table of Contents
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- [Prerequisites](#prerequisites)
+- [Basic Structure](#basic-structure)
+- [Run The Project](#run-the-project)
+- [Guidelines](#guidelines)
+- [Rules To Follow](#rules-to-follow)
+- [Integration](#integration)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Prerequisites
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+Before digging deeper on how to implement this feature, ensure that you have the following prerequisites in place:
 
-## Learn More
+- You're working with Reactjs or Nextjs frameworks
+- Important dependencies that need to be installed:
+  - @mui/material
+  - axios
+  - tailwindcss and its relevance
+  - lucide-react
+  - autosuggest-highlight
 
-To learn more about Next.js, take a look at the following resources:
+## Basic Structure
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+This project's folder includes 2 separate parts of the code: A fake server and a client interface.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+The fake server is written inside the `route.ts` file in `app/api/search` directory. It returns the static data, which you can find easily inside `data.ts` file in `lib` folder.
 
-## Deploy on Vercel
+The main Auto-suggest search box feature is in `AutoSuggestSearchBox` component in `components/auto-suggest-search-box.tsx` file. Inside the `components` folder, there are several components that are needed to make the main component work.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+The `lib` folder contains some basic functions and constants.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Run The Project
+
+Simply use the command `yarn dev` to execute the code.
+
+## Guidelines
+
+The auto-suggest search box is on the left hand side, and the settings panel is on the right hand side.
+
+As the default state, the search box will always display the results in 3 blocks: Suggested Terms, Collections and Products. The number of character that triggers the display of Suggestions results when typing is 1.
+
+You can customize by display of the blocks and the number of character by checking/un-checking the box or type different number.
+
+## Rules To Follow
+
+- At least 1 option needs to be checked to ensure the data will be displayed correctly.
+- The number of character must be greater than 0.
+
+## Integration
+
+To apply this feature to any Search Box, please kindly follow these steps:
+
+- Copy `components` folder and paste it to your project
+- Copy `lib/utils.ts` file and paste it to your project
+- Make sure you have installed all the necessary dependencies mentioned in the Prerequisites.
+- Place `AutoSuggestSearchBox` component to your code
+- Inside `AutoSuggestSearchBox` component (`auto-suggest-search-box.tsx` file), you need to replace the current endpoint with your own endpoint inside `handleCallSearch` function: replace `apiUrl + apiRoutes.navigation.searchByTerm` with your custom url.
+- Run the project and have fun!
